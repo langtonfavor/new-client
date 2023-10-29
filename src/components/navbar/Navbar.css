@@ -1,0 +1,8 @@
+.gear-icon {
+    background-image: url('path-to-your-gear-icon.png');
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer; /* Make it look clickable */
+  }
+  

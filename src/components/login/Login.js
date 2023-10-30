@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    
     e.preventDefault();
     fetch("http://localhost:5222/api/user/login", {
       method: "POST",
@@ -20,14 +20,19 @@ const Login = () => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error("failed");
         }
-        // Redirect to the 
-        navigate("/dashboard");
         return res.json();
       })
       .then((data) => {
         console.log(data);
-        if (data.status === 'ok') {
+        if (data && data.token) {
           setFormData({ email: '', password: '' });
+
+          // Set the token in local storage
+          localStorage.setItem('token', data.token);
+          navigate("/dashboard");
+        } else {
+          // Handle the case where 'data' or 'data.token' is undefined
+          console.error("Invalid data or token missing.");
         }
       })
       .catch((error) => console.error("Error:", error));

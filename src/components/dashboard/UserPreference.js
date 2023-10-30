@@ -50,6 +50,7 @@ const UserPreferences = () => {
     const token = localStorage.getItem('token');
     if (token) {
       const tokenPayload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT
+      console.log(tokenPayload);
       return tokenPayload.userId;
     }
     return null;

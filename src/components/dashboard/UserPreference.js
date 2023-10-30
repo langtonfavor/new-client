@@ -47,7 +47,7 @@ const UserPreferences = () => {
   };
   
   const getUserIdFromAuthentication = () => {
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem('token');
     if (token) {
       const tokenPayload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT
       return tokenPayload.userId;

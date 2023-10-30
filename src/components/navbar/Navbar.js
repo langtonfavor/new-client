@@ -1,21 +1,21 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import UserSettingsDropdown from './UserSettingsDropdown';
 
 const Navbar = () => {
-  const history = useHistory(); // Initialize the useHistory hook
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     
     localStorage.removeItem('userToken'); 
   
     
-    history.push('/login');
+    navigate('/login');
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-success bg-success">
-      <a className="navbar-brand text-light" href="#">Your Logo</a>
+      <span className="navbar-brand text-light">Your Logo</span>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

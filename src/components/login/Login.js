@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
     fetch("http://localhost:5222/api/user/login", {
       method: "POST",
@@ -18,8 +20,8 @@ const Login = () => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error("failed");
         }
-        // Redirect to the dashboard
-        window.location.href = "/dashboard";
+        // Redirect to the 
+        navigate("/dashboard");
         return res.json();
       })
       .then((data) => {
@@ -44,6 +46,8 @@ const Login = () => {
           <input type="password" name="password" value={formData.password} onChange={handleChange} className="form-control" id="password" />
         </div>
         <button type="submit" className="btn btn-primary">Log In</button>
+        
+        <p className="mt-3">No Account? <Link to="/signup">Sign Up</Link></p>
       </form>
     </div>
   );

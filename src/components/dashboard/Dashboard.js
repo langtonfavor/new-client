@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../navbar/Navbar'; 
 import Header from './Header'; 
-import UserPreferences from '../user/UserPreferences';
+import UserPreferences from './UserPreference';
 
 const Dashboard = ({ username }) => {
   return (

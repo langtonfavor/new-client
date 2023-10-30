@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -88,6 +89,7 @@ const Signup = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary">Sign Up</button>
+        <p className="mt-3">Already have an Account? <Link to="/login">Log In</Link></p>
       </form>
     </div>
   );
